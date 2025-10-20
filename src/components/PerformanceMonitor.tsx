@@ -23,8 +23,9 @@ export default function PerformanceMonitor() {
         const observer = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
             if (entry.entryType === 'resource' && entry.name.includes('images.unsplash.com')) {
-              const loadTime = entry.responseEnd - entry.requestStart;
-              trackImageLoad(entry.name, loadTime);
+              const resource = entry as PerformanceResourceTiming;
+              const loadTime = resource.responseEnd - resource.requestStart;
+              trackImageLoad(resource.name, loadTime);
             }
           }
         });
