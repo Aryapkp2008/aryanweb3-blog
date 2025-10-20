@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import LayoutWithTheme from '@/components/layout/LayoutWithTheme';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ import { ArrowRight, Search, Calendar, Clock, Tag, X } from 'lucide-react';
 import PlaceholderImage from '@/components/ui/PlaceholderImage';
 import ReadingProgress from '@/components/ReadingProgress';
 
-export default function BlogPage() {
+function BlogPageInner() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -334,5 +334,13 @@ export default function BlogPage() {
         </div>
       </section>
     </LayoutWithTheme>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center">Loading blog…</div>}>
+      <BlogPageInner />
+    </Suspense>
   );
 }
