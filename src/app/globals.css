@@ -1,8 +1,72 @@
 @import "tailwindcss";
 
+/* Light mode variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #7c3aed;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #171717;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #171717;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #7c3aed;
+}
+
+/* Explicit light mode class */
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #7c3aed;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #171717;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #171717;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #7c3aed;
+}
+
+/* Dark mode variables */
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-foreground: #fafafa;
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+  --primary: #9333ea;
+  --primary-foreground: #fafafa;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #9333ea;
 }
 
 @theme inline {
@@ -12,15 +76,331 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles with smooth transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Force light mode styles when light class is present */
+.light,
+body.light,
+html.light,
+html.light body {
+  background-color: #ffffff !important;
+  color: #171717 !important;
+}
+
+/* Ensure header text is visible in light mode */
+.light header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.light header * {
+  color: inherit;
+}
+
+/* Light mode text colors */
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6,
+.light p,
+.light span:not(.text-white),
+.light div:not(.text-white) {
+  color: #171717;
+}
+
+.light .text-gray-900 { color: #111827 !important; }
+.light .text-gray-800 { color: #1f2937 !important; }
+.light .text-gray-700 { color: #374151 !important; }
+.light .text-gray-600 { color: #4b5563 !important; }
+.light .text-gray-500 { color: #6b7280 !important; }
+.light .text-gray-400 { color: #9ca3af !important; }
+.light .text-gray-300 { color: #d1d5db !important; }
+.light .text-gray-200 { color: #e5e7eb !important; }
+.light .text-gray-100 { color: #f3f4f6 !important; }
+
+.light .bg-white { background-color: #ffffff !important; }
+.light .bg-gray-50 { background-color: #f9fafb !important; }
+.light .bg-gray-100 { background-color: #f3f4f6 !important; }
+.light .bg-gray-200 { background-color: #e5e7eb !important; }
+.light .bg-gray-800 { background-color: #f3f4f6 !important; }
+.light .bg-gray-900 { background-color: #ffffff !important; }
+.light .bg-gray-950 { background-color: #ffffff !important; }
+
+/* Light mode borders */
+.light .border-gray-700 { border-color: #e5e7eb !important; }
+.light .border-gray-800 { border-color: #d1d5db !important; }
+.light .border-gray-900 { border-color: #9ca3af !important; }
+
+/* Force dark mode styles when dark class is present */
+.dark,
+body.dark,
+html.dark,
+html.dark body {
+  background-color: #09090b !important;
+  color: #fafafa !important;
+}
+
+/* Dark mode text colors */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark p,
+.dark span:not(.text-white),
+.dark div:not(.text-white) {
+  color: #fafafa;
+}
+
+.dark .text-gray-100 { color: #f3f4f6 !important; }
+.dark .text-gray-200 { color: #e5e7eb !important; }
+.dark .text-gray-300 { color: #d1d5db !important; }
+.dark .text-gray-400 { color: #9ca3af !important; }
+.dark .text-gray-500 { color: #6b7280 !important; }
+.dark .text-gray-600 { color: #4b5563 !important; }
+.dark .text-gray-700 { color: #374151 !important; }
+.dark .text-gray-800 { color: #1f2937 !important; }
+.dark .text-gray-900 { color: #111827 !important; }
+
+.dark .bg-gray-950 { background-color: #030712 !important; }
+.dark .bg-gray-900 { background-color: #111827 !important; }
+.dark .bg-gray-800 { background-color: #1f2937 !important; }
+.dark .bg-gray-700 { background-color: #374151 !important; }
+
+/* Light mode specific styles */
+.light {
+  color-scheme: light;
+}
+
+.light body {
+  background-color: #ffffff !important;
+  color: #171717 !important;
+}
+
+.light .text-white {
+  color: #ffffff !important;
+}
+
+.light .bg-gradient-to-br {
+  opacity: 1;
+}
+
+/* Dark mode specific styles for better readability */
+.dark {
+  color-scheme: dark;
+}
+
+/* Dark Reader Protection - Prevents double dark mode */
+[data-darkreader-mode] body {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+[data-darkreader-mode] .dark {
+  filter: none !important;
+}
+
+/* Force text visibility when Dark Reader is active */
+[data-darkreader-mode] *:not(img):not(video):not(svg) {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+/* Ensure all text elements are visible */
+[data-darkreader-mode] h1,
+[data-darkreader-mode] h2,
+[data-darkreader-mode] h3,
+[data-darkreader-mode] h4,
+[data-darkreader-mode] h5,
+[data-darkreader-mode] h6,
+[data-darkreader-mode] p,
+[data-darkreader-mode] span,
+[data-darkreader-mode] div,
+[data-darkreader-mode] a,
+[data-darkreader-mode] button,
+[data-darkreader-mode] input,
+[data-darkreader-mode] textarea,
+[data-darkreader-mode] label {
+  color: var(--foreground) !important;
+  opacity: 1 !important;
+}
+
+/* Override Dark Reader inline styles */
+html[data-darkreader-scheme="dark"] body {
+  background-color: var(--background) !important;
+}
+
+html[data-darkreader-scheme="dark"] * {
+  border-color: var(--border) !important;
+}
+
+/* Ensure images and media work well in dark mode */
+.dark img:not(.no-dark-filter) {
+  opacity: 0.9;
+}
+
+.dark .image-container img {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* Code blocks dark mode support */
+.dark pre {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+}
+
+.dark code {
+  background-color: #27272a;
+  color: #a78bfa;
+}
+
+/* Better link colors for dark mode */
+.dark a:not(.no-dark-style) {
+  color: #a78bfa;
+}
+
+.dark a:not(.no-dark-style):hover {
+  color: #c4b5fd;
+}
+
+/* Custom animations for modern UI */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.4);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar - Light mode */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8b5cf6, #3b82f6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7c3aed, #2563eb);
+}
+
+/* Custom scrollbar - Dark mode */
+.dark ::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6b21a8, #1e40af);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7c3aed, #2563eb);
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
