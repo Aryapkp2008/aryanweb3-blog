@@ -121,7 +121,7 @@ export default function ReadingProgress({ content, postSlug, trackProgress = tru
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
         }`}
       >
-        <div className="relative w-16 h-16 bg-white/95 dark:bg-gray-900/85 backdrop-blur supports-[backdrop-filter]:backdrop-blur-md rounded-full shadow-xl ring-1 ring-black/5 dark:ring-white/10 border border-gray-200 dark:border-gray-700 p-1">
+        <div className="relative w-16 h-16 bg-white/95 dark:bg-gray-900/85 backdrop-blur supports-[backdrop-filter]:backdrop-blur-md rounded-full shadow-xl ring-1 ring-black/5 dark:ring-white/10 border border-gray-200 dark:border-gray-700 p-1 dark:shadow-purple-500/20 dark:shadow-2xl">
           <svg className="w-14 h-14 transform -rotate-90" suppressHydrationWarning>
             <circle
               cx="28"
@@ -130,7 +130,7 @@ export default function ReadingProgress({ content, postSlug, trackProgress = tru
               stroke="currentColor"
               strokeWidth="3"
               fill="none"
-              className="text-gray-200 dark:text-gray-600"
+              className="text-gray-300 dark:text-gray-500"
               suppressHydrationWarning
             />
             <circle
@@ -142,7 +142,7 @@ export default function ReadingProgress({ content, postSlug, trackProgress = tru
               fill="none"
               strokeDasharray={`${2 * Math.PI * 24}`}
               strokeDashoffset={`${2 * Math.PI * 24 * (1 - progress / 100)}`}
-              className="text-purple-600 dark:text-purple-300 transition-all duration-150"
+              className="text-purple-600 dark:text-purple-200 transition-all duration-150"
               suppressHydrationWarning
             />
           </svg>
