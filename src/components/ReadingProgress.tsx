@@ -80,30 +80,30 @@ export default function ReadingProgress({ content, postSlug, trackProgress = tru
         </div>
         
         {/* Progress Stats */}
-        <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-4 py-2 shadow-md">
+        <div className="bg-white/90 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:backdrop-blur-md border-b border-gray-200 dark:border-gray-700 px-4 py-2 shadow-md">
           <div className="max-w-7xl mx-auto flex items-center justify-between text-sm">
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <TrendingUp className="w-4 h-4 text-purple-500 dark:text-purple-400" suppressHydrationWarning />
-                <span className="font-medium text-gray-900 dark:text-gray-100">{Math.round(progress)}%</span>
+              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <TrendingUp className="w-4 h-4 text-purple-600 dark:text-purple-300" suppressHydrationWarning />
+                <span className="font-medium text-gray-900 dark:text-white">{Math.round(progress)}%</span>
                 <span className="text-xs">complete</span>
               </div>
               
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <Clock className="w-4 h-4 text-blue-500 dark:text-blue-400" suppressHydrationWarning />
-                <span className="font-medium text-gray-900 dark:text-gray-100">{readingTime} min</span>
+              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <Clock className="w-4 h-4 text-blue-600 dark:text-blue-300" suppressHydrationWarning />
+                <span className="font-medium text-gray-900 dark:text-white">{readingTime} min</span>
                 <span className="text-xs">to read</span>
               </div>
               
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <BookOpen className="w-4 h-4 text-green-500 dark:text-green-400" suppressHydrationWarning />
-                <span className="font-medium text-gray-900 dark:text-gray-100">{wordsRead}</span>
+              <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+                <BookOpen className="w-4 h-4 text-green-600 dark:text-green-300" suppressHydrationWarning />
+                <span className="font-medium text-gray-900 dark:text-white">{wordsRead}</span>
                 <span className="text-xs">words read</span>
               </div>
             </div>
             
             {/* Milestone Messages */}
-            <div className="hidden sm:block text-xs text-gray-500 dark:text-gray-400">
+            <div className="hidden sm:block text-xs text-gray-500 dark:text-gray-300">
               {progress === 0 && "Let's start reading! 📚"}
               {progress > 0 && progress < 25 && "Great start! Keep going! 🚀"}
               {progress >= 25 && progress < 50 && "Quarter way through! 💪"}
@@ -121,7 +121,7 @@ export default function ReadingProgress({ content, postSlug, trackProgress = tru
           isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
         }`}
       >
-        <div className="relative w-16 h-16 bg-white dark:bg-gray-800 rounded-full shadow-lg p-1">
+        <div className="relative w-16 h-16 bg-white/95 dark:bg-gray-900/85 backdrop-blur supports-[backdrop-filter]:backdrop-blur-md rounded-full shadow-xl ring-1 ring-black/5 dark:ring-white/10 border border-gray-200 dark:border-gray-700 p-1">
           <svg className="w-14 h-14 transform -rotate-90" suppressHydrationWarning>
             <circle
               cx="28"
@@ -130,7 +130,7 @@ export default function ReadingProgress({ content, postSlug, trackProgress = tru
               stroke="currentColor"
               strokeWidth="3"
               fill="none"
-              className="text-gray-200 dark:text-gray-700"
+              className="text-gray-200 dark:text-gray-600"
               suppressHydrationWarning
             />
             <circle
@@ -142,12 +142,12 @@ export default function ReadingProgress({ content, postSlug, trackProgress = tru
               fill="none"
               strokeDasharray={`${2 * Math.PI * 24}`}
               strokeDashoffset={`${2 * Math.PI * 24 * (1 - progress / 100)}`}
-              className="text-purple-500 dark:text-purple-400 transition-all duration-150"
+              className="text-purple-600 dark:text-purple-300 transition-all duration-150"
               suppressHydrationWarning
             />
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-xs font-bold text-gray-900 dark:text-gray-100">{Math.round(progress)}%</span>
+            <span className="text-xs font-bold text-gray-900 dark:text-white">{Math.round(progress)}%</span>
           </div>
         </div>
       </div>
