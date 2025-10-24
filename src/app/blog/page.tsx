@@ -102,7 +102,7 @@ function BlogPageInner() {
       </section>
 
       {/* Filters Section */}
-      <section className="py-8 bg-gray-50 dark:bg-gray-900 sticky top-0 z-20 shadow-sm transition-colors">
+      <section className="py-8 bg-gray-50 dark:bg-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Search Bar */}
           <div className="mb-6">
